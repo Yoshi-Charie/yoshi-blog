@@ -1,4 +1,5 @@
 // plugins/firebase.js
+import { defineNuxtPlugin } from '#app';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -9,13 +10,13 @@ const firebaseConfig = {
   projectId: 'yoshi-blog-ae6d6',
   storageBucket: 'yoshi-blog-ae6d6.appspot.com',
   messagingSenderId: '1003145565592',
-  appId: 'YOUR_APP_ID',  // 実際の appId を使用
+  appId: 'YOUR_APP_ID',
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// サインイン用のメソッド
+// サインインメソッド
 const signin = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -27,7 +28,7 @@ const signin = async (email, password) => {
   }
 };
 
-// サインアップ用のメソッド
+// サインアップメソッド
 const signup = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -39,4 +40,8 @@ const signup = async (email, password) => {
   }
 };
 
-export { auth, signin, signup };
+export default defineNuxtPlugin(nuxtApp => {
+  nuxtApp.provide('auth', auth);
+  nuxtApp.provide('signin', signin);
+  nuxtApp.provide('signup', signup);
+});

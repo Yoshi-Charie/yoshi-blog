@@ -1,3 +1,4 @@
+// signup.vue
 <template>
   <div>
     <h1>Sign Up</h1>
@@ -10,8 +11,6 @@
 </template>
 
 <script>
-import { signup } from '~/plugins/firebase'; // ここで signup メソッドをインポート
-
 export default {
   data() {
     return {
@@ -22,8 +21,7 @@ export default {
   methods: {
     async signup() {
       try {
-        // signup メソッドを呼び出す
-        const user = await signup(this.email, this.password);
+        const user = await this.$inject('signup')(this.email, this.password); // グローバルで提供された signup を呼び出し
         console.log('User signed up:', user);
         this.$router.push('/dashboard');  // サインアップ後にダッシュボードへ遷移
       } catch (error) {

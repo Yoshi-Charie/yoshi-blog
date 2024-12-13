@@ -1,3 +1,4 @@
+// login.vue
 <template>
   <div>
     <h1>ログイン</h1>
@@ -19,8 +20,6 @@
 </template>
 
 <script>
-import { auth, signin } from '~/plugins/firebase'; // auth と signin をインポート
-
 export default {
   data() {
     return {
@@ -32,7 +31,7 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        await signin(this.email, this.password); // signin メソッドを呼び出す
+        await this.$inject('signin')(this.email, this.password); // グローバルで提供された signin を呼び出し
         this.$router.push('/dashboard');  // ログイン成功後に /dashboard にリダイレクト
       } catch (error) {
         console.error("Error logging in: ", error.message);
