@@ -44,7 +44,7 @@
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = "#";
-      a.textContent = month;  // 2024年12月など
+      a.textContent = month;  // 例: 2024年12月
       a.addEventListener('click', () => showDiaryList(month));
       li.appendChild(a);
       monthListElement.appendChild(li);
@@ -61,8 +61,8 @@
         const li = document.createElement('li');
         const a = document.createElement('a');
 
-        // ローカルパスに基づいてリンクを作成
-        a.href = `file:///C:/Users/ngfgm/Git/yoshi-blog/dialy/${month}/${entry.file}`;
+        // NetlifyのURLでファイルをリンク
+        a.href = `https://yoshi-blog.netlify.app/diary/${month.replace("年", "-").replace("月", "")}/${entry.file}`;
         
         // リンクのテキストを表示：例「2024年12月 14日」
         a.textContent = `${month}${entry.date}日`;  
