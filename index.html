@@ -61,8 +61,8 @@
         const li = document.createElement('li');
         const a = document.createElement('a');
 
-        // NetlifyのURLでファイルをリンク
-        a.href = `https://yoshi-blog.netlify.app/diary/${month.replace("年", "-").replace("月", "")}/${entry.file}`;
+        // GitHubのraw URLを使ってリンクを作成
+        a.href = `https://raw.githubusercontent.com/Yoshi-Charie/yoshi-blog/main/dialy/${month.replace("年", "-").replace("月", "")}/${entry.file}`;
         
         // リンクのテキストを表示：例「2024年12月 14日」
         a.textContent = `${month}${entry.date}日`;  
@@ -74,3 +74,4 @@
   </script>
 </body>
 </html>
+
