@@ -5,3 +5,5 @@
 
 
 
+[[plugins]]
+package = "netlify-plugin-one"  # ここに正しいプラグインのパッケージ名を指定
