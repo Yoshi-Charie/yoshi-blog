@@ -31,10 +31,10 @@
     const diaries = {
       "2024年12月": [
         "14日.js",
-        
+        // 他の日記ファイルもここに追加できます
       ],
       "2025年1月": [
-        
+        // 他の月の日記ファイル
       ]
     };
 
@@ -60,7 +60,8 @@
       diaryFiles.forEach(file => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = `diary/${month}/${file}`;
+        // ローカルサーバー経由でアクセス
+        a.href = `http://localhost:8080/diary/${month}/${file}`;
         a.textContent = file;
         li.appendChild(a);
         ul.appendChild(li);
