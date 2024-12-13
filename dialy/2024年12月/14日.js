@@ -1,4 +1,3 @@
-document.body.innerHTML = `
   <header>
     <h1>2024年12月14日の日記</h1>
   </header>
