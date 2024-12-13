@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxi dev",
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "test": "jest"
   },
   "dependencies": {
+    "concurrently": "^9.1.0",  
     "core-js": "^3.25.3",
     "firebase": "^11.1.0",
     "nuxt": "^3.14.1592",
