@@ -3,5 +3,5 @@
   publish = "dist"              # ビルド成果物を配置するディレクトリ
   functions = "netlify/functions" # サーバーレス関数を格納するディレクトリ（必要な場合）
 
-[[plugins]]
+
 
