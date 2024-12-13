@@ -1,7 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr: true, // SSR (サーバーサイドレンダリング) を有効にする
+  ssr: false, // SSR (サーバーサイドレンダリング) を有効にする
   generate: {
     fallback: true,  // 404.html を生成する場合
   
