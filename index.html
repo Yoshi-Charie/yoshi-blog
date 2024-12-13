@@ -62,7 +62,7 @@
         const a = document.createElement('a');
 
         // GitHubのraw URLを使ってリンクを作成
-        a.href = `https://raw.githubusercontent.com/Yoshi-Charie/yoshi-blog/main/dialy/${month.replace("年", "-").replace("月", "")}/${entry.file}`;
+        a.href = `https://yoshi-blog.netlify.app//dialy/2024-12/${entry.file}`; 
         
         // リンクのテキストを表示：例「2024年12月 14日」
         a.textContent = `${month}${entry.date}日`;  
