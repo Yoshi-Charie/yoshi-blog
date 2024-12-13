@@ -17,4 +17,6 @@ const app = initializeApp(firebaseConfig);
 // Firebase Authentication インスタンスを取得
 const auth = getAuth(app);
 
-export { auth };
+export default defineNuxtPlugin(() => {
+  // Firebase 初期化コードや設定
+});

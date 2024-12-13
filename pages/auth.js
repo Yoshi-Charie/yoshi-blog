@@ -1,5 +1,5 @@
 // middleware/auth.js
-import { auth } from '@/firebase';
+import firebase from '~/firebase';
 
 export default defineNuxtRouteMiddleware((to, from) => {
   const user = auth.currentUser;
