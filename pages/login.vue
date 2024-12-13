@@ -18,7 +18,7 @@
   </template>
   
   <script>
-  import { auth } from '@/firebase';
+  import firebase from '~/plugins/firebase';  // ~ はプロジェクトのルートディレクトリを指します
   import { signInWithEmailAndPassword } from 'firebase/auth';
   
   export default {
