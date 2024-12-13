@@ -1,7 +1,9 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr: false, // SSR (サーバーサイドレンダリング) を有効にする
+
+  // SSR (サーバーサイドレンダリング) を有効にする
+  ssr: false,
 
   nitro: {
     preset: 'static',  // 静的サイトとして生成
@@ -12,6 +14,7 @@ export default {
     fallback: true,  // 404.html を生成する場合
   
 },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'yoshi-blog',
@@ -50,5 +53,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
-}
+  },
+
+  compatibilityDate: '2024-12-13'
+};

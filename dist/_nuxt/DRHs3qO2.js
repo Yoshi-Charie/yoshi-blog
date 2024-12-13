@@ -1,0 +1,1 @@
+import{_ as o,v as n,x as t,t as s}from"./CXUq6K0K.js";const a={name:"IndexPage"};function l(r,e,c,i,p,u){return s(),n("div",null,e[0]||(e[0]=[t("h1",null,"Welcome to My Blog",-1),t("p",null,"This is the homepage of my blog built with Nuxt 3!",-1)]))}const m=o(a,[["render",l]]);export{m as default};
