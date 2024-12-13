@@ -3,25 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>シンプル日記ブログ</title>
+  <title>感情日記</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>シンプル日記ブログ</h1>
+    <h1>感情日記</h1>
   </header>
 
   <main>
-    <h2>日記一覧</h2>
-    <ul>
-      <li><a href="diary/2024-12-01.js">2024年12月1日</a></li>
-      <li><a href="diary/2024-12-02.js">2024年12月2日</a></li>
-      <li><a href="diary/2024-12-03.js">2024年12月3日</a></li>
+    <h2>月ごとの日記一覧</h2>
+    <ul id="monthList">
+      <!-- 月ごとのリンクが動的に追加される場所 -->
     </ul>
+
+    <div id="diaryList">
+      <!-- 月をクリックするとその月の日記が表示される -->
+    </div>
   </main>
 
   <footer>
     <p>© 2024 シンプル日記ブログ</p>
   </footer>
+
+  <script>
+    // 月ごとのデータ
+    const diaries = {
+      "2024年12月": [
+        "14日.js",
+        
+      ],
+      "2025年1月": [
+        
+      ]
+    };
+
+    // 月ごとのリンクを生成
+    const monthListElement = document.getElementById('monthList');
+    for (const month in diaries) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = "#";
+      a.textContent = month;
+      a.addEventListener('click', () => showDiaryList(month));
+      li.appendChild(a);
+      monthListElement.appendChild(li);
+    }
+
+    // 月をクリックするとその月の日記をリストアップ
+    function showDiaryList(month) {
+      const diaryListElement = document.getElementById('diaryList');
+      diaryListElement.innerHTML = ""; // リストをクリア
+
+      const diaryFiles = diaries[month];
+      const ul = document.createElement('ul');
+      diaryFiles.forEach(file => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `diary/${month}/${file}`;
+        a.textContent = file;
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      diaryListElement.appendChild(ul);
+    }
+  </script>
 </body>
 </html>
