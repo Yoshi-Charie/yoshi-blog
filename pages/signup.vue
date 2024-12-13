@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import firebase from '~/plugins/firebase'; // firebase設定ファイルをインポート
+import { signup } from '~/plugins/firebase'; // ここで signup メソッドをインポート
 
 export default {
   data() {
@@ -22,14 +22,12 @@ export default {
   methods: {
     async signup() {
       try {
-        // Firebase のサインアップメソッド
-        const userCredential = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password);
-        console.log('User signed up:', userCredential.user);
-        // サインアップ成功後に別ページにリダイレクト（例: ダッシュボードページ）
-        this.$router.push('/dashboard');
+        // signup メソッドを呼び出す
+        const user = await signup(this.email, this.password);
+        console.log('User signed up:', user);
+        this.$router.push('/dashboard');  // サインアップ後にダッシュボードへ遷移
       } catch (error) {
-        console.error('Error during sign up:', error.message);
-        // エラーメッセージを表示
+        console.error('Sign up failed:', error.message);
         alert('Sign up failed: ' + error.message);
       }
     }
