@@ -29,11 +29,11 @@
   <script>
     // 月ごとのデータ
     const diaries = {
-      "2024-12": [
+      "2024年12月": [
         { date: "14", file: "14.js" },
         // 他の日記ファイルもここに追加できます
       ],
-      "2025-1": [
+      "2025年1月": [
         // 他の月の日記ファイル
       ]
     };
@@ -44,7 +44,7 @@
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = "#";
-      a.textContent = month;
+      a.textContent = month;  // 2024年12月など
       a.addEventListener('click', () => showDiaryList(month));
       li.appendChild(a);
       monthListElement.appendChild(li);
@@ -60,9 +60,12 @@
       diaryFiles.forEach(entry => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        // ファイル名に基づいてリンクを作成
-        a.href = `./diary/${month}/${entry.file}`;
-        a.textContent = `${month} ${entry.date}日`;  // 「2024年12月 14日」の形式で表示
+
+        // ローカルパスに基づいてリンクを作成
+        a.href = `file:///C:/Users/ngfgm/Git/yoshi-blog/dialy/${month.replace("年", "-").replace("月", "")}/${entry.file}`;
+        
+        // リンクのテキストを表示：例「2024年12月 14日」
+        a.textContent = `${month}${entry.date}日`;  
         li.appendChild(a);
         ul.appendChild(li);
       });
