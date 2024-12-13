@@ -27,15 +27,14 @@
   </footer>
 
   <script>
-    // 月ごとのデータ（Netlifyでのファイル構造を基に）
+    // 月ごとのデータ
     const diaries = {
       "2024年12月": [
-        "14日.js",
-        "15日.js",
-        "16日.js"  // 追加の日記もここに加えてください
+        { date: "14", file: "14.js" },
+        // 他の日記ファイルもここに追加できます
       ],
       "2025年1月": [
-        "1日.js", "2日.js"  // 同様に1月の日記も追加
+        // 他の月の日記ファイル
       ]
     };
 
@@ -58,12 +57,12 @@
 
       const diaryFiles = diaries[month];
       const ul = document.createElement('ul');
-      diaryFiles.forEach(file => {
+      diaryFiles.forEach(entry => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        // Netlify上でアクセスする相対パス
-        a.href = `diary/${month}/${file}`;
-        a.textContent = file.replace(".js", ""); // "14日.js" → "14日"
+        // ファイル名に基づいてリンクを作成
+        a.href = `./diary/${month}/${entry.file}`;
+        a.textContent = `${month} ${entry.date}日`;  // 「2024年12月 14日」の形式で表示
         li.appendChild(a);
         ul.appendChild(li);
       });
