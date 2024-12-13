@@ -1,42 +1,38 @@
 <template>
   <div>
-    <h1>新規登録</h1>
-    <form @submit.prevent="handleSignUp">
-      <div>
-        <label for="email">メールアドレス</label>
-        <input type="email" v-model="email" required />
-      </div>
-      <div>
-        <label for="password">パスワード</label>
-        <input type="password" v-model="password" required />
-      </div>
-      <div>
-        <button type="submit">登録</button>
-      </div>
+    <h1>Sign Up</h1>
+    <form @submit.prevent="signup">
+      <input v-model="email" type="email" placeholder="Email" required />
+      <input v-model="password" type="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
     </form>
   </div>
 </template>
 
 <script>
-import firebase from '~/plugins/firebase';  // ~ はプロジェクトのルートディレクトリを指します
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import firebase from '~/plugins/firebase'; // firebase設定ファイルをインポート
 
 export default {
   data() {
     return {
       email: '',
-      password: '',
+      password: ''
     };
   },
   methods: {
-    async handleSignUp() {
+    async signup() {
       try {
-        await createUserWithEmailAndPassword(auth, this.email, this.password);
-        this.$router.push('/dashboard');  // 認証後に /dashboard にリダイレクト
+        // Firebase のサインアップメソッド
+        const userCredential = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password);
+        console.log('User signed up:', userCredential.user);
+        // サインアップ成功後に別ページにリダイレクト（例: ダッシュボードページ）
+        this.$router.push('/dashboard');
       } catch (error) {
-        console.error("Error signing up: ", error.message);
+        console.error('Error during sign up:', error.message);
+        // エラーメッセージを表示
+        alert('Sign up failed: ' + error.message);
       }
-    },
-  },
+    }
+  }
 };
 </script>
