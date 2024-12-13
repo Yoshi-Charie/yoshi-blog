@@ -1,7 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr: false, // SSR (サーバーサイドレンダリング) を有効にする
+  ssr: true, // SSR (サーバーサイドレンダリング) を有効にする
 
   nitro: {
     preset: 'static',  // 静的サイトとして生成
