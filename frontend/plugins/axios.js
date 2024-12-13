@@ -1,11 +1,12 @@
-// frontend/plugins/axios.js
+// plugins/axios.js
 import axios from 'axios';
 
-export default ({ $axios }, inject) => {
+export default defineNuxtPlugin(nuxtApp => {
+  // axiosインスタンスを作成
   const api = axios.create({
     baseURL: 'http://localhost:5000/api',  // バックエンドのAPIのURL
   });
 
-  // APIインスタンスを `$api` としてNuxtのコンテキストに注入
-  inject('api', api);
-};
+  // axiosインスタンスをNuxtアプリに提供
+  nuxtApp.provide('api', api);
+});

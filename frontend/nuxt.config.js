@@ -29,14 +29,19 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
+  buildModules: [ 
   ],
-
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true,
+    },
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
+  build: { transpile: ['axios'], 
   }
 }
