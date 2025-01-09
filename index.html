@@ -40,7 +40,12 @@
         // 他の日記ファイルもここに追加できます
       ],
       "2025年1月": [
-        // 他の月の日記ファイル
+      { date: "1", file: "1.js" },
+        { date: "5", file: "5.js" },
+        { date: "6", file: "6.js" },
+        { date: "7", file: "7.js" },
+        { date: "8", file: "8.js" },
+        { date: "9", file: "9.js" },
       ]
     };
 
@@ -69,7 +74,8 @@
 
         // GitHubのraw URLを使ってリンクを作成
         a.href = `https://yoshi-blog.netlify.app//dialy/2024-12/${entry.file}`; 
-        
+        a.href = `https://yoshi-blog.netlify.app//dialy/2025-1/${entry.file}`; 
+
         // リンクのテキストを表示：例「2024年12月 14日」
         a.textContent = `${month}${entry.date}日`;  
         li.appendChild(a);
