@@ -29,60 +29,66 @@
   <script>
     // 月ごとのデータ
     const diaries = {
-      "2024年12月": [
-        { date: "7", file: "7.js" },
-        { date: "10", file: "10.js" },
-        { date: "16", file: "16.js" },
-        { date: "17", file: "17.js" },
-        { date: "23", file: "23.js" },
-        { date: "28", file: "28.js" },
-        { date: "31", file: "31.js" },
-        // 他の日記ファイルもここに追加できます
-      ],
-      "2025年1月": [
-      { date: "1", file: "1.js" },
-        { date: "5", file: "5.js" },
-        { date: "6", file: "6.js" },
-        { date: "7", file: "7.js" },
-        { date: "8", file: "8.js" },
-        { date: "9", file: "9.js" },
-      ]
-    };
+  "2024年12月": [
+    { date: "7", file: "7.js" },
+    { date: "10", file: "10.js" },
+    { date: "16", file: "16.js" },
+    { date: "17", file: "17.js" },
+    { date: "23", file: "23.js" },
+    { date: "28", file: "28.js" },
+    { date: "31", file: "31.js" },
+  ],
+  "2025年1月": [
+    { date: "1", file: "1.js" },
+    { date: "5", file: "5.js" },
+    { date: "6", file: "6.js" },
+    { date: "7", file: "7.js" },
+    { date: "8", file: "8.js" },
+    { date: "9", file: "9.js" },
+  ]
+};
 
-    // 月ごとのリンクを生成
-    const monthListElement = document.getElementById('monthList');
-    for (const month in diaries) {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = "#";
-      a.textContent = month;  // 例: 2024年12月
-      a.addEventListener('click', () => showDiaryList(month));
-      li.appendChild(a);
-      monthListElement.appendChild(li);
+// 月ごとのリンクを生成
+const monthListElement = document.getElementById('monthList');
+for (const month in diaries) {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = "#";
+  a.textContent = month;  // 例: 2024年12月
+  a.addEventListener('click', () => showDiaryList(month));
+  li.appendChild(a);
+  monthListElement.appendChild(li);
+}
+
+// 月をクリックするとその月の日記をリストアップ
+function showDiaryList(month) {
+  const diaryListElement = document.getElementById('diaryList');
+  diaryListElement.innerHTML = ""; // リストをクリア
+
+  const diaryFiles = diaries[month];
+  const ul = document.createElement('ul');
+  diaryFiles.forEach(entry => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+
+    // 月ごとに適切なURLを設定
+    let url = '';
+    if (month === "2024年12月") {
+      url = `https://yoshi-blog.netlify.app/dialy/2024-12/${entry.file}`;
+    } else if (month === "2025年1月") {
+      url = `https://yoshi-blog.netlify.app/dialy/2025-1/${entry.file}`;
     }
 
-    // 月をクリックするとその月の日記をリストアップ
-    function showDiaryList(month) {
-      const diaryListElement = document.getElementById('diaryList');
-      diaryListElement.innerHTML = ""; // リストをクリア
+    // GitHubのraw URLを使ってリンクを作成
+    a.href = url; 
 
-      const diaryFiles = diaries[month];
-      const ul = document.createElement('ul');
-      diaryFiles.forEach(entry => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-
-        // GitHubのraw URLを使ってリンクを作成
-        a.href = `https://yoshi-blog.netlify.app//dialy/2024-12/${entry.file}`; 
-        a.href = `https://yoshi-blog.netlify.app//dialy/2025-1/${entry.file}`; 
-
-        // リンクのテキストを表示：例「2024年12月 14日」
-        a.textContent = `${month}${entry.date}日`;  
-        li.appendChild(a);
-        ul.appendChild(li);
-      });
-      diaryListElement.appendChild(ul);
-    }
+    // リンクのテキストを表示：例「2024年12月 14日」
+    a.textContent = `${month}${entry.date}日`;  
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  diaryListElement.appendChild(ul);
+}
   </script>
 </body>
 </html>
