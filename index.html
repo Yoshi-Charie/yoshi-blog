@@ -46,6 +46,7 @@
     { date: "8", file: "8.js" },
     { date: "9", file: "9.js" },
   ]
+  // 新しい月が追加された場合、ここに追加するだけで対応できる
 };
 
 // 月ごとのリンクを生成
@@ -67,17 +68,16 @@ function showDiaryList(month) {
 
   const diaryFiles = diaries[month];
   const ul = document.createElement('ul');
+  
+  // 年月部分を抽出してURLのベースに使用
+  const yearMonth = month.replace('年', '-').replace('月', '');
+
   diaryFiles.forEach(entry => {
     const li = document.createElement('li');
     const a = document.createElement('a');
 
-    // 月ごとに適切なURLを設定
-    let url = '';
-    if (month === "2024年12月") {
-      url = `https://yoshi-blog.netlify.app/dialy/2024-12/${entry.file}`;
-    } else if (month === "2025年1月") {
-      url = `https://yoshi-blog.netlify.app/dialy/2025-1/${entry.file}`;
-    }
+    // 動的にURLを生成
+    const url = `https://yoshi-blog.netlify.app/dialy/${yearMonth}/${entry.file}`;
 
     // GitHubのraw URLを使ってリンクを作成
     a.href = url; 
@@ -87,6 +87,7 @@ function showDiaryList(month) {
     li.appendChild(a);
     ul.appendChild(li);
   });
+
   diaryListElement.appendChild(ul);
 }
   </script>
