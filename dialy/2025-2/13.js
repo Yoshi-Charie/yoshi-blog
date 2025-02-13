@@ -1,6 +1,6 @@
    document.body.innerHTML = `
   <header>
-    <h1>2025年1月14日の日記</h1>
+    <h1>2025年2月13日の日記</h1>
   </header>
 
   <main>
